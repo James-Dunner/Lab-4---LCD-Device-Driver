@@ -11,8 +11,8 @@ void main(void)
 {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 
-    char topLineMessage[] = "ECE382 is my favorite class!#";
-    char bottomLineMessage[] = "Capt. Branchflower is great!#";
+    char topLineMessage[] = "ECE382 is my favorite class!";	//Don't need to predefine final character because string is terminated by null character \0
+    char bottomLineMessage[] = "Capt. Branchflower is great!";
 
 	// Sets SS as GPIO
     P1DIR |= BIT0;

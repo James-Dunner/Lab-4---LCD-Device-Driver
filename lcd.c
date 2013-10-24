@@ -180,7 +180,7 @@ void writeChar(char asciiChar)
 
 void writeString(char * string)
 {
-	while(*string != '#')
+	while(*string != 0)	// Using null character to know when to terminate string
 	{
 		writeChar(*string);
 		string++;
