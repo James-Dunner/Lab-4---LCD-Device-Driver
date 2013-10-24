@@ -97,7 +97,6 @@ void LCD_init()
 
     writeCommandByte(0x02);
 
-
     SPI_SEND(0);
     delayMicroSeconds();
 
@@ -116,14 +115,13 @@ void LCD_WRT_8(char byteToSend)
 	sendByte &= 0x0F;
 	LCD_WRT_4(sendByte);
 
-	return;
 }
 
 // Ported to C by me
 void LCD_WRT_4(char byteToSend)
 {
 	 byteToSend &= 0x0F;
-	 byteToSend &= LCD_CON;
+	 byteToSend |= LCD_CON; //Changed from &= to |=
 	 byteToSend &= 0x7F;
 	 SPI_SEND(byteToSend);
 	 delayMicroSeconds();
@@ -135,8 +133,6 @@ void LCD_WRT_4(char byteToSend)
 	 byteToSend &= 0x7F;
 	 SPI_SEND(byteToSend);
 	 delayMicroSeconds();
-
-	 return;
 }
 
 // Ported to C by me
@@ -156,7 +152,7 @@ void Set_SS_LO()
 }
 
 // Created by me
-void delayMilliSecconds()
+void delayMilliSeconds()
 {
 	__delay_cycles(1745);
 
