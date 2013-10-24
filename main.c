@@ -11,8 +11,8 @@ void main(void)
 {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 
-    unsigned char topLineMessage[] = "ECE382 is my favorite class!";
-    unsigned char bottomLineMessage[] = "Capt. Branchflower is great!";
+    char topLineMessage[] = "ECE382 is my favorite class!#";
+    char bottomLineMessage[] = "Capt. Branchflower is great!#";
 
 	// Sets SS as GPIO
     P1DIR |= BIT0;
@@ -26,4 +26,9 @@ void main(void)
 	LCD_init();
 	LCD_CLR();
 
+	writeString(topLineMessage);
+	cursorToLineTwo();
+	writeString(bottomLineMessage);
+
+	while(1);
 }

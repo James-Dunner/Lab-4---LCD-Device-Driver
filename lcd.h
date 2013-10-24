@@ -39,13 +39,13 @@ void delayMilliSeconds();
 
 void delayMicroSeconds();
 
+void writeChar(char asciiChar);
+
+void writeString(char * string);
+
 // Yet to be defined
 
-void printChar(char asciiChar);
-
-void printString(char * string);
-
-void scrollMessage(char * string1, char * string2);
+void scrollString(char * string1, char * string2);
 
 #endif // LCD_H_
 

@@ -30,8 +30,6 @@ void init_SPI()
 	P1SEL2 |= BIT7;
 
 	UCB0CTL1 &= ~UCSWRST;
-
-	return;
 }
 
 // Function provided by Capt. Branchflower
@@ -41,8 +39,6 @@ void writeCommandNibble(char commandNibble)
 	LCD_WRT_4(commandNibble);
 
 	delayMilliSeconds();
-
-	return;
 }
 
 // Function provided by Capt. Branchflower
@@ -52,8 +48,6 @@ void writeCommandByte(char commandByte)
 	LCD_WRT_8(commandByte);
 
 	delayMilliSeconds();
-
-	return;
 }
 
 // Function provided by Capt. Branchflower
@@ -62,16 +56,12 @@ void writeDataByte(char dataByte)
     LCD_CON |= RS_MASK;
     LCD_WRT_8(dataByte);
     delayMilliSeconds();
-
-    return;
 }
 
 // Function provided by Capt. Branchflower
 void LCD_CLR()
 {
     writeCommandByte(1);
-
-    return;
 }
 
 // Ported to C by me
@@ -99,8 +89,6 @@ void LCD_init()
 
     SPI_SEND(0);
     delayMicroSeconds();
-
-	return;
 }
 
 // Function provided by Capt. Branchflower
@@ -114,14 +102,13 @@ void LCD_WRT_8(char byteToSend)
 	sendByte = byteToSend;
 	sendByte &= 0x0F;
 	LCD_WRT_4(sendByte);
-
 }
 
 // Ported to C by me
 void LCD_WRT_4(char byteToSend)
 {
 	 byteToSend &= 0x0F;
-	 byteToSend |= LCD_CON; //Changed from &= to |=
+	 byteToSend |= LCD_CON;
 	 byteToSend &= 0x7F;
 	 SPI_SEND(byteToSend);
 	 delayMicroSeconds();
@@ -139,32 +126,24 @@ void LCD_WRT_4(char byteToSend)
 void Set_SS_HI()
 {
 	P1OUT |= BIT0;
-
-	return;
 }
 
 // Ported to C by me
 void Set_SS_LO()
 {
 	P1OUT &= ~BIT0;
-
-	return;
 }
 
 // Created by me
 void delayMilliSeconds()
 {
 	__delay_cycles(1745);
-
-	return;
 }
 
 // Created by me
 void delayMicroSeconds()
 {
 	__delay_cycles(45);
-
-	return;
 }
 
 // Function provided by Capt. Branchflower
@@ -184,33 +163,31 @@ void SPI_SEND(char byteToSend)
     readByte = UCB0RXBUF;
 
     Set_SS_HI();
-
-    return;
 }
 
 // Created by me
 void cursorToLineTwo()
 {
 	writeCommandByte(0xc0);
-
-	return;
 }
 
-/*Remaining Functions Have Yet To Be Defined*/
+/*Defined writeChar and writeString*/
 
 void writeChar(char asciiChar)
 {
-	return;
+	writeDataByte(asciiChar);
 }
 
 void writeString(char * string)
 {
-	return;
+	while(*string != '#')
+	{
+		writeChar(*string);
+		string++;
+	}
 }
 
 void scrollString(char * string1, char * string2)
 {
-	return;
+
 }
-
-
