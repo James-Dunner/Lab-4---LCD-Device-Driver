@@ -9,6 +9,8 @@
 #ifndef LCD_H_
 #define LCD_H_
 
+//API Library for Lab 4
+
 void writeCommandNibble(char commandNibble);
 
 void writeCommandByte(char commandByte);
