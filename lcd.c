@@ -146,6 +146,11 @@ void delayMicroSeconds()
 	__delay_cycles(45);
 }
 
+void scrollDelay()
+{
+	_delay_cycles(100000);
+}
+
 // Function provided by Capt. Branchflower
 void SPI_SEND(char byteToSend)
 {
@@ -166,12 +171,16 @@ void SPI_SEND(char byteToSend)
 }
 
 // Created by me
+void cursorToLineOne()
+{
+	writeCommandByte(0x80);
+}
+
+// Created by me
 void cursorToLineTwo()
 {
 	writeCommandByte(0xc0);
 }
-
-/*Defined writeChar and writeString*/
 
 void writeChar(char asciiChar)
 {
@@ -187,7 +196,32 @@ void writeString(char * string)
 	}
 }
 
-void scrollString(char * string1, char * string2)
+unsigned int getStringLength(char * string)
 {
+	unsigned int stringLength = 0;
 
+	while(*string != 0)
+	{
+		string++;
+		stringLength++;
+	}
+
+	return stringLength;
+}
+
+void scrollString(char * string, unsigned int stringLength)
+{
+	unsigned int i;
+	char firstChar;
+
+	firstChar = *string;
+
+	for(i=0; i<stringLength; i++)
+	{
+		string[i] = string[i+1];
+	}
+
+	string[stringLength-1] = firstChar;
+
+	scrollDelay();
 }

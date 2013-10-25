@@ -25,6 +25,10 @@ void LCD_WRT_8(char byteToSend);
 
 void SPI_SEND(char byteToSend);
 
+unsigned int getStringLength(char * string);
+
+void cursorToLineOne();
+
 void cursorToLineTwo();
 
 void Set_SS_HI();
@@ -39,13 +43,15 @@ void delayMilliSeconds();
 
 void delayMicroSeconds();
 
+void scrollDelay();
+
 void writeChar(char asciiChar);
 
 void writeString(char * string);
 
 // Yet to be defined
 
-void scrollString(char * string1, char * string2);
+void scrollString(char * string, unsigned int stringLength);
 
 #endif // LCD_H_
 

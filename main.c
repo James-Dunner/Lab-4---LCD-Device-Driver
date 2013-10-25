@@ -14,7 +14,12 @@ void main(void)
     char topLineMessage[] = "ECE382 is my favorite class!";	//Don't need to predefine final character because string is terminated by null character \0
     char bottomLineMessage[] = "Capt. Branchflower is great!";
 
-	// Sets SS as GPIO
+	unsigned int volatile topMessageLength, bottomMessageLength;
+
+	topMessageLength = 0;
+	bottomMessageLength = 0;
+
+    // Sets SS as GPIO
     P1DIR |= BIT0;
 
 	// Sets PB1-3 as input
@@ -26,9 +31,18 @@ void main(void)
 	LCD_init();
 	LCD_CLR();
 
-	writeString(topLineMessage);
-	cursorToLineTwo();
-	writeString(bottomLineMessage);
+	topMessageLength = getStringLength(topLineMessage);
+	bottomMessageLength = getStringLength(bottomLineMessage);
 
-	while(1);
+	while(1)
+	{
+		cursorToLineOne();
+		writeString(topLineMessage);
+		cursorToLineTwo();
+		writeString(bottomLineMessage);
+
+		scrollString(topLineMessage, topMessageLength);
+		scrollString(bottomLineMessage, bottomMessageLength);
+	}
+
 }
