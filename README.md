@@ -1,46 +1,46 @@
-Lab 4 - An LCD Device Driver
+#Lab 4 - An LCD Device Driver
 =========================
 
 Library for writing to the LCD and scrolling messages in C
 
-#Functions
+##Functions
 
-##void writeCommandNibble(char commandNibble);
+###void writeCommandNibble(char commandNibble);
 
-##void writeCommandByte(char commandByte);
+###void writeCommandByte(char commandByte);
 
-##void writeDataByte(char dataByte);
+###void writeDataByte(char dataByte);
 
-##void LCD_init();
+###void LCD_init();
 
-##void LCD_CLR();
+###void LCD_CLR();
 
-##void LCD_WRT_8(char byteToSend);
+###void LCD_WRT_8(char byteToSend);
 
-##void SPI_SEND(char byteToSend);
+###void SPI_SEND(char byteToSend);
 
-##unsigned int getStringLength(char * string);
+###unsigned int getStringLength(char * string);
 
-##void cursorToLineOne();
+###void cursorToLineOne();
 
-##void cursorToLineTwo();
+###void cursorToLineTwo();
 
-##void Set_SS_HI();
+###void Set_SS_HI();
 
-##void Set_SS_LO();
+###void Set_SS_LO();
 
-##void LCD_WRT_4(char byteToSend);
+###void LCD_WRT_4(char byteToSend);
 
-##void init_SPI();
+###void init_SPI();
 
-##void delayMilliSeconds();
+###void delayMilliSeconds();
 
-##void delayMicroSeconds();
+###void delayMicroSeconds();
 
-##void scrollDelay();
+###void scrollDelay();
 
-##void writeChar(char asciiChar);
+###void writeChar(char asciiChar);
 
-##void writeString(char * string);
+###void writeString(char * string);
 
-##void scrollString(char * string, unsigned int stringLength);
+###void scrollString(char * string, unsigned int stringLength);
