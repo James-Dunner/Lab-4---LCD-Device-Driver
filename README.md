@@ -1,6 +1,4 @@
 #Lab 4 - An LCD Device Driver
-=========================
-
 Library for writing to the LCD and scrolling messages in C
 
 ##Functions
