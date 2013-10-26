@@ -15,7 +15,7 @@ Writes data to LCD (byte size); prints byte on LCD
 ###void LCD_init()
 Initializes the LCD
 
-###void LCD_CLR();
+###void LCD_CLR()
 Clears the LCD and sets the cursor on the upper line of the LCD
 
 ###unsigned int getStringLength(char * string)
