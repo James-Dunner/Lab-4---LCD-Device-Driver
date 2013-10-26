@@ -1,6 +1,9 @@
 #Lab 4 - An LCD Device Driver
 Library for writing to the LCD and scrolling messages in C
 
+##Methods
+Example code can be found in main.c
+
 ##Functions
 
 ###void writeCommandNibble(char commandNibble)
